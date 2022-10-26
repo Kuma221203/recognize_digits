@@ -1,15 +1,15 @@
-import preprocess.py
+import preprocess 
 import cv2
 import numpy as np
-from tensorflow import keras
+from tensorflow.keras import models
 
 #get model
-model = keras.models.load_model('./models/modelRD.h5')
+model = models.load_model('./models/modelRD.h5')
 model.load_weights('./models/weight_of_modelRD.h5')
 #get image
 img = cv2.imread('./img/img1.jpg')
-imgMaxContrast = maxContrast(img)
-data = getData(imgMaxContrast)
+imgMaxContrast = preprocess.maxContrast(img)
+data = preprocess.getData(imgMaxContrast)
 #predict 
 y_predict = model.predict(data)
 result = np.argmax(y_predict, axis = 1)

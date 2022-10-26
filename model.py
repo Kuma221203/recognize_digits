@@ -1,7 +1,7 @@
 import numpy as np
 from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense, Conv2D, Flatten, MaxPooling2D, Dropout
-from tensorflow.keras import activations, models
+from tensorflow.keras import activations
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.datasets import mnist
 
@@ -44,7 +44,3 @@ model.save_weights('./models/weight_of_modelRD.h5')
 
 # load_model at path('./models/modelRD.h5')
 # load_weight at path('./models/weight_of_modelRD.h5')
-
-# new_model = models.load_model('./models/modelRD.h5')
-# new_model.load_weights('./models/weight_of_modelRD.h5')
-

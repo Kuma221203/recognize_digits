@@ -1,7 +1,5 @@
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt 
-
 def maxContrast(img):
 	imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 	kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3,3))
@@ -25,8 +23,7 @@ def getData(imgMaxContrast):
 	char_ind_x = {}
 	for ind,c in enumerate(contours):
 		x,y,w,h = cv2.boundingRect(c)
-		if 
-			cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
+		if (5*w > h and w > 10):
 			cut_char = imgThresh[y:(y+h), x:(x+w)]
 			cut_char_resize = cv2.resize(cut_char, (24,24))
 			char_standard = cv2.copyMakeBorder(cut_char_resize, 2,2,2,2, cv2.BORDER_CONSTANT)
@@ -42,4 +39,3 @@ def getData(imgMaxContrast):
 		data.append(char_data)
 	data = np.array(data)
 	return data
-
